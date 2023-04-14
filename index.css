@@ -5,21 +5,22 @@
     align-items: center;
 }
 
-.logo {
-    width: 190px;
+.logo-container {
+    width: 170px;
 }
 
 .nav-items {
-    padding:  0px 2px;
+    padding: 0px 2px;
 }
 
-.nav-items > ul {
-    font-size: 24px;
+.nav-items>ul {
+    font-size: 20px;
     display: flex;
     list-style-type: none;
+    cursor: pointer;
 }
 
-.nav-items > ul > li {
+.nav-items>ul>li {
     padding: 10px;
     margin: 10px
 }
@@ -33,6 +34,8 @@
     margin: 5px;
     padding: 5px;
     width: 200px;
+    background-color: antiquewhite;
+    border-radius: 8px
 }
 
 .res-card:hover {
@@ -46,9 +49,10 @@
 
 .res-logo {
     width: 100%;
+    border-radius: 6px;
 }
 
 .filter-btn {
- margin: 10px;
- cursor: pointer;
+    margin: 10px;
+    cursor: pointer;
 }
