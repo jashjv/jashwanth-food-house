@@ -15,7 +15,7 @@ body{
     display: flex;
     justify-content: space-between;
     border: 1px solid black;
-    background: #383737;
+    background: #000;
     color: #fff;
     align-items: center;
     font-family: 'Poppins', sans-serif;
@@ -24,7 +24,7 @@ body{
 }
 
 .logo-container {
-    width: 170px;
+    width: 128px;
 }
 
 .nav-items {
@@ -136,8 +136,8 @@ img
 
 .back p
 {
-    position: absolute;
-    top: 50px;
+    /* position: absolute; */
+    /* top: 50px; */
     font-size: 15px;
     font-family: 'Poppins', sans-serif;
 }
@@ -146,7 +146,7 @@ img
 {
     position: absolute;
     padding: 10px;
-    top: 200px;
+    top: 180px;
     color: #3d3939;
     font-family: 'Poppins', sans-serif;
 }
@@ -162,6 +162,9 @@ img
     cursor: pointer;
     backface-visibility: hidden; /* cant see the backside elements as theyre turning around */
     transition: transform .5s linear 0s;
+    /* border: 1px solid black; */
+    border-radius: 8px;
+    box-shadow: 3px 5px gray;
 }
 
 /* style the maincontainer class with all child div's of class .back */
@@ -174,7 +177,7 @@ img
     width: 302px;
     height: 290px;
     border-radius: 10px;
-    padding: 5px;
+    padding: 8px;
     backface-visibility: hidden; /* cant see the backside elements as theyre turning around */
     transition: transform .5s linear 0s;
     display: flex;
@@ -202,3 +205,9 @@ img
 /* .slick-arrow{
     display: none;
 } */
+
+
+.filter-btn{
+    padding: 5px;
+    margin: 7px;
+}
