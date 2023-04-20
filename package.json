@@ -1,7 +1,7 @@
 {
-  "name": "namaste-react",
+  "name": "foodHUB",
   "version": "1.0.0",
-  "description": "This is Namaste React by Akshay Saini",
+  "description": "foods co.in",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
