@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import { RestroCard } from '../App';
 import { resList } from '../utils/mockData';
 
@@ -7,6 +7,10 @@ const Body = () => {
     const [dark, setDark] = useState(true);
     const [list, setList] = useState(resList);
     const [value, setValue] = useState('');
+
+    useEffect(() => {
+        
+    },[])
 
 
     const handleMode = () => {
@@ -18,8 +22,8 @@ const Body = () => {
     }
 
     const handleSearch = () => {
-        const filterData = list.filter((res) => res.data.name.includes(value))
-        setList(filterData)
+        const _filterData = list.filter((res) => res.data.name.includes(value))
+        setList(_filterData)
     }
 
 

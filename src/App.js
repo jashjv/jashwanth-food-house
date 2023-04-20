@@ -49,12 +49,12 @@ export const RestroCard = (props) => {
     deliveryTime,
     id,
     address,
-    slugs:{city,restaurant}
-   
+    slugs: { city, restaurant }
+
   } = resData?.data
 
 
- 
+
   return (
     <>
       <body>
@@ -71,7 +71,7 @@ export const RestroCard = (props) => {
             <div class="image">
               <img src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
                 cloudinaryImageId
-              } className='res-logo'/>
+              } className='res-logo' />
               <h3>{name}</h3>
               {/* <h5>{avgRating} stars</h5> */}
             </div>
