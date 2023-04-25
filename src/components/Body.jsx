@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { RestroCard } from '../App';
-import { resList } from '../utils/mockData';
+// import { resList } from '../utils/mockData';
 import LoadingShimmer from './Shinner';
 
 
@@ -40,7 +40,7 @@ const Body = () => {
 
     if (!list) return null;
 
-    if (filterRest.length===0) return <h1>no restro found</h1>
+    // if (filterRest.length===0) return <h1>no restro found</h1>
 
     return (list?.length === 0) ? <LoadingShimmer /> : (
         <div className={dark === true ? "body" : "notbody"}>
@@ -48,12 +48,12 @@ const Body = () => {
                 className='search-input'
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
-                placeholder='search foods'
+                placeholder='search foods' 
             />
             <button className="search" onClick={handleSearch}>Search</button>
 
             <button className='filter-btn' onClick={handleMode}>Darkmode</button>
-            <button className='filter-btn' onClick={() => setList(resList)}>All Restorents</button>
+            <button className='filter-btn' onClick={() => setfilterRest(list)}>All Restorents</button>
             <button className='filter-btn' onClick={handleFilter}>Top Rated Hotels</button>
             <div className="res-container">
                 {filterRest.map((restaurant) => (

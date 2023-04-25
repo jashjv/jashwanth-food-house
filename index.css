@@ -176,6 +176,30 @@ img {
         31px 47px 125px rgba(0, 0, 0, 0.32);
 }
 
+.shimmer{
+    width: 302px;
+    height: 290px;
+    background:lightgray;   
+    margin: 20px;
+    border-radius: 12px;
+    /* background: linear-gradient(100deg,
+    rgba(255,255,255,0) 20%,
+    rgba(255,255,255,0.5) 50%,
+    rgba(255,255,255,0) 80%);
+   */
+   box-sizing: border-box;
+    animation: shimmer 2s infinite linear;
+}
+  
+@keyframes shimmer{
+    from {
+        transform: translateX(-200%);
+    }
+    to{
+        transform: translateX(200%);
+    }
+}
+
 /* style the maincontainer class with all child div's of class .back */
 .maincontainer>.back {
     position: absolute;
@@ -217,4 +241,12 @@ img {
 .filter-btn {
     padding: 5px;
     margin: 7px;
+}
+
+.error{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }

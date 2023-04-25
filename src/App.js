@@ -3,39 +3,9 @@ import ReactDOM from "react-dom/client";
 import Slider from "react-slick";
 import Header from "./components/Header";
 import Body from "./components/Body";
-
-0
-
-
-
-const foodsImg = [
-  { obj: 'https://cdn.pixabay.com/photo/2014/06/11/17/00/food-366875__340.jpg' },
-  { obj: 'https://t3.ftcdn.net/jpg/02/97/67/70/360_F_297677001_zX7ZzRq8DObUV5IWTHAIhAae6DuiEQh4.jpg' },
-  { obj: "https://media.istockphoto.com/id/618041312/photo/asian-food-background-with-various-of-cooking-ingredients.jpg?s=170667a&w=0&k=20&c=N12mNgO_oUfWkBKYsGkrx9Zx-R6TM1N9JUq4nvNlQJs=" },
-  { obj: "https://previews.123rf.com/images/kesu87/kesu871907/kesu87190700007/127038773-asian-food-background-with-various-ingredients-on-rustic-wooden-table-top-view.jpg" }
-]
-
-const SliderComponent = () => {
-
-  var settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  };
-
-  return (
-    <Slider {...settings}>
-      {foodsImg.map((elm) => (
-        <div>
-          <img src={elm.obj} />
-        </div>
-      ))
-      }
-    </Slider>
-  )
-}
+import { createBrowserRouter ,RouterProvider} from "react-router-dom";
+import Aboutus from "./components/Aboutus";
+import ErrorPage from "./components/404";
 
 export const RestroCard = (props) => {
   const { resData } = props;
@@ -47,7 +17,7 @@ export const RestroCard = (props) => {
     cuisines,
     costForTwo,
     deliveryTime,
-    id,
+    id, 
     address,
     slugs: { city, restaurant }
 
@@ -58,8 +28,8 @@ export const RestroCard = (props) => {
   return (
     <>
       <body>
-        <div class="maincontainer">
-          <div class="back">
+        <div className="maincontainer">
+          <div className="back">
             <h6>₹{costForTwo / 100} FOR TWO</h6>
             <span>{cuisines.join(", ")}</span>
             <p>{avgRating} stars</p>
@@ -67,8 +37,8 @@ export const RestroCard = (props) => {
             <span>{city}</span>
             <span>{deliveryTime} minutes Deliver Time</span>
           </div>
-          <div class="front">
-            <div class="image">
+          <div className="front">
+            <div className="image">
               <img src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
                 cloudinaryImageId
               } className='res-logo' />
@@ -85,7 +55,7 @@ export const RestroCard = (props) => {
 
 
 
-const AppLayout = () => {
+export const AppLayout = () => {
   return (
     <div className="app">
       <Header />
@@ -94,7 +64,19 @@ const AppLayout = () => {
   );
 };
 
+const appRouter = createBrowserRouter([
+  {
+    path: '/',
+    element:<AppLayout/>,
+    errorElement:<ErrorPage/>
+  },
+  {
+    path: 'about',
+    element:<Aboutus/>
+  }
+]);
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<AppLayout />);
+root.render(<RouterProvider router={appRouter} />);
