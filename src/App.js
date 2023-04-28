@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { Children, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Slider from "react-slick";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import { createBrowserRouter ,RouterProvider} from "react-router-dom";
+import { createBrowserRouter ,RouterProvider, Outlet} from "react-router-dom";
 import Aboutus from "./components/Aboutus";
 import ErrorPage from "./components/404";
+import Contactus from "./components/Contactus";
+import RestroMenu from "./components/RestroMenu";
 
 export const RestroCard = (props) => {
   const { resData } = props;
@@ -59,7 +61,7 @@ export const AppLayout = () => {
   return (
     <div className="app">
       <Header />
-      <Body />
+      <Outlet />
     </div>
   );
 };
@@ -68,12 +70,32 @@ const appRouter = createBrowserRouter([
   {
     path: '/',
     element:<AppLayout/>,
-    errorElement:<ErrorPage/>
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: '/',
+        element:<Body/>
+        }, 
+      {
+      path: '/about',
+      element:<Aboutus/>
+      },
+      {
+      path: '/contact',
+      element:<Contactus/>
+      },
+      {
+        path: '/cart',
+        element:<Contactus/>
+      },
+      {
+        path: '/restourent/:id',
+        element:<RestroMenu/>
+      }
+    ]
+    
   },
-  {
-    path: 'about',
-    element:<Aboutus/>
-  }
+  
 ]);
 
 
