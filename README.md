@@ -1,5 +1,9 @@
 # foodHUB 🚀
 
+to run the dev server : npx parcel index.html
+
+server starts in localhost:1234
+
 
 # Parcel
 - Dev Build
