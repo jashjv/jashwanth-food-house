@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/namastedev/namaste-react.git"
+    "url": "https://github.com/jashjv/jashwanth-food-house.git"
   },
   "keywords": [],
   "author": "jashvanth gowda",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/namastedev/namaste-react/issues"
+    "url": "https://github.com/jashjv/jashwanth-food-house.git"
   },
-  "homepage": "https://github.com/namastedev/namaste-react#readme",
+  "homepage": "https://github.com/jashjv/jashwanth-food-house.git#readme",
   "devDependencies": {
     "parcel": "^2.8.3",
     "process": "^0.11.10"
