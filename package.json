@@ -1,7 +1,7 @@
 {
   "name": "foodHUB",
   "version": "1.0.0",
-  "description": "foods co.in",
+  "description": "have goodfoods here",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",

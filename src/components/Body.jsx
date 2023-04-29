@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { RestroCard } from '../App';
 // import { resList } from '../utils/mockData';
 import LoadingShimmer from './Shinner';
+import { Link} from "react-router-dom";
 
 
 const Body = () => {
@@ -57,10 +58,12 @@ const Body = () => {
             <button className='filter-btn' onClick={handleFilter}>Top Rated Hotels</button>
             <div className="res-container">
                 {filterRest.map((restaurant) => (
+                    <Link to={'/restourent/' + restaurant.data.id}>
                     <RestroCard
                         key={restaurant.data.id}
                         resData={restaurant}
-                    />
+                        />
+                         </Link>
                 ))}
             </div>
         </div>

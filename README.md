@@ -25,11 +25,6 @@ server starts in localhost:1234
 - Different dev and prod bundles
 
 
-
-# Namaste Food
-
-
-/**
  * Header
  *  - Logo
  *  - Nav Items
@@ -44,7 +39,7 @@ server starts in localhost:1234
  *  - Links
  *  - Address
  *  - Contact
- */
+  
 
 
 
