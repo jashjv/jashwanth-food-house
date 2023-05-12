@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { RestroCard } from '../App';
 // import { resList } from '../utils/mockData';
 import LoadingShimmer from './Shinner';
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import axios from 'axios'
 
 
 const Body = () => {
