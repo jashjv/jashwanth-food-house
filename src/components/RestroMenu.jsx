@@ -6,9 +6,11 @@ import useRestro from '../utils/useRestro';
 
 const RestroMenu = () => {
     const params = useParams();
+    
     const { id } = params;
 
-    const res=useRestro(id)  //this is custom hook
+    const res = useRestro(id)  //this is custom hook
+    
     return (
         <div className='maindiv'>
             <div className='innerImg'>

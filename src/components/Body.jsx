@@ -3,7 +3,8 @@ import { RestroCard } from '../App';
 // import { resList } from '../utils/mockData';
 import LoadingShimmer from './Shinner';
 import { Link } from "react-router-dom";
-import axios from 'axios'
+import axios from 'axios' 
+import useOnline from '../utils/useOnline';
 
 
 const Body = () => {
@@ -20,8 +21,8 @@ const Body = () => {
     const getRestData = async () => {
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9667581&lng=77.614948&page_type=DESKTOP_WEB_LISTING");
         const res = await data.json()
-        setList(res?.data?.cards[2]?.data?.data?.cards)
-        setfilterRest(res?.data?.cards[2]?.data?.data?.cards)
+        setList(res?.data?.cards[2]?.data?.data?.cards || [])
+        setfilterRest(res?.data?.cards[2]?.data?.data?.cards || [])
     }
 
     const handleMode = () => {
@@ -39,6 +40,11 @@ const Body = () => {
         setfilterRest(_filterData);
     }
 
+    const isOnline = useOnline();  
+
+    if (!isOnline) {
+    return <h1>Offline....Please check ur internet connection !!!!</h1>
+    }
 
     if (!list) return null;
 

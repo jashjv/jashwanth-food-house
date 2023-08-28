@@ -1,4 +1,4 @@
-import React, { Children, useState } from "react";
+import React, { Children, useState ,lazy,Suspense} from "react";
 import ReactDOM from "react-dom/client";
 import Slider from "react-slick";
 import Header from "./components/Header";
@@ -8,6 +8,11 @@ import Aboutus from "./components/Aboutus";
 import ErrorPage from "./components/404";
 import Contactus from "./components/Contactus";
 import RestroMenu from "./components/RestroMenu";
+import { Shimmer } from "react-shimmer";
+// import InstaMart from "./components/InstaMart";
+
+const InstaMart = lazy(()=>import("./components/InstaMart"))
+
 
 export const RestroCard = (props) => {
   const { resData } = props;
@@ -91,6 +96,13 @@ const appRouter = createBrowserRouter([
       {
         path: '/restourent/:id',
         element:<RestroMenu/>
+      },
+      {
+        path: '/instamart',
+        element:
+          <Suspense fallback={<Shimmer/>}>
+            <InstaMart />
+            </Suspense>
       }
     ]
     
