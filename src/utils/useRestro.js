@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
+import { MENU_API } from "../utils/constants";
 
-const useRestro = (id) => {
-    const [res, setres] = useState({})
-    useEffect(() => {
-        getRestroInfo()
-    }, [])
+const useRestaurantMenu = (resId) => {
+  const [resInfo, setResInfo] = useState(null);
 
-    async function getRestroInfo() {
-        const data = await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=" + id)
-        const json = await data.json();
-        setres(json.data?.cards[0]?.card?.card?.info || [])
-    }
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-    return res;
+  const fetchData = async () => {
+    const data = await fetch(MENU_API + resId);
+    const json = await data.json();
+    setResInfo(json.data);
+  };
 
-}
+  return resInfo;
+};
 
-export default useRestro;
+export default useRestaurantMenu;

@@ -1,9 +1,9 @@
-import React, { Children, useState ,lazy,Suspense} from "react";
+import React, { Children, useState, lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Slider from "react-slick";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import { createBrowserRouter ,RouterProvider, Outlet} from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Aboutus from "./components/Aboutus";
 import ErrorPage from "./components/404";
 import Contactus from "./components/Contactus";
@@ -11,7 +11,7 @@ import RestroMenu from "./components/RestroMenu";
 import { Shimmer } from "react-shimmer";
 // import InstaMart from "./components/InstaMart";
 
-const InstaMart = lazy(()=>import("./components/InstaMart"))
+const InstaMart = lazy(() => import("./components/InstaMart"))
 
 
 export const RestroCard = (props) => {
@@ -24,11 +24,11 @@ export const RestroCard = (props) => {
     cuisines,
     costForTwo,
     deliveryTime,
-    id, 
+    id,
     address,
-    slugs: { city, restaurant }
-
-  } = resData?.data
+    areaName
+    // slugs: { restaurant }
+  } = resData
 
 
 
@@ -41,7 +41,7 @@ export const RestroCard = (props) => {
             <span>{cuisines.join(", ")}</span>
             <p>{avgRating} stars</p>
             <p>{address}</p>
-            <span>{city}</span>
+            <span>{areaName}</span>
             <span>{deliveryTime} minutes Deliver Time</span>
           </div>
           <div className="front">
@@ -60,8 +60,6 @@ export const RestroCard = (props) => {
 
 }
 
-
-
 export const AppLayout = () => {
   return (
     <div className="app">
@@ -74,40 +72,40 @@ export const AppLayout = () => {
 const appRouter = createBrowserRouter([
   {
     path: '/',
-    element:<AppLayout/>,
+    element: <AppLayout />,
     errorElement: <ErrorPage />,
     children: [
       {
         path: '/',
-        element:<Body/>
-        }, 
-      {
-      path: '/about',
-      element:<Aboutus/>
+        element: <Body />
       },
       {
-      path: '/contact',
-      element:<Contactus/>
+        path: '/about',
+        element: <Aboutus />
+      },
+      {
+        path: '/contact',
+        element: <Contactus />
       },
       {
         path: '/cart',
-        element:<Contactus/>
+        element: <Contactus />
       },
       {
-        path: '/restourent/:id',
-        element:<RestroMenu/>
+        path: '/restaurants/:resId',
+        element: <RestroMenu />
       },
       {
         path: '/instamart',
         element:
-          <Suspense fallback={<Shimmer/>}>
+          <Suspense fallback={<Shimmer />}>
             <InstaMart />
-            </Suspense>
+          </Suspense>
       }
     ]
-    
+
   },
-  
+
 ]);
 
 
