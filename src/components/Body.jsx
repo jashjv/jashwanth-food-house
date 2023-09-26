@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { RestroCard } from '../App';
+import { RestroCard,EnhancedRestroCard } from '../App';
 // import { resList } from '../utils/mockData';
 import LoadingShimmer from './Shinner';
 import { Link } from "react-router-dom";
-import axios from 'axios'
+import axios from 'axios';
+import Slider from "react-slick";
 import useOnline from '../utils/useOnline';
+import 'slick-carousel/slick/slick.css';
+import "slick-carousel/slick/slick-theme.css";
 
 
 const Body = () => {
@@ -12,6 +15,17 @@ const Body = () => {
     const [list, setList] = useState([]);
     const [filterRest, setfilterRest] = useState([])
     const [value, setValue] = useState('');
+
+    
+    var settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay:true
+
+      };
 
     useEffect(() => {
         getRestData()
@@ -31,6 +45,8 @@ const Body = () => {
         );
     };
 
+   console.log(filterRest ,'aaa') 
+
     const handleMode = () => {
         setDark(!dark)
     }
@@ -48,6 +64,8 @@ const Body = () => {
 
     const isOnline = useOnline();
 
+    const HocCard = EnhancedRestroCard(RestroCard) // here we taking the HOC of main component
+
     if (!isOnline) {
         return <h1>Offline....Please check ur internet connection !!!!</h1>
     }
@@ -60,6 +78,27 @@ const Body = () => {
         :
         (
             <div className={dark === true ? "body" : "notbody"}>
+                
+                <Slider {...settings}>
+                    <div className='slider'>
+                        <img src='https://dirttodinner.s3.amazonaws.com/apps/uploads/2021/05/06105043/nobeefrecipes_724x300.png' />
+                    </div>
+                    <div  className='slider'>
+                        <img src='https://dirttodinner.s3.amazonaws.com/apps/uploads/2021/05/06105043/nobeefrecipes_724x300.png' />
+
+                    </div>
+                    <div  className='slider'>
+                        <img src='https://images.unsplash.com/photo-1576402187878-974f70c890a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1933&q=80' />
+                    </div>
+                    <div  className='slider'>
+                    <img src='https://images.unsplash.com/photo-1576402187878-974f70c890a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1933&q=80' />
+                    </div>
+                    <div  className='slider'>
+                    <img src='https://images.unsplash.com/photo-1576402187878-974f70c890a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1933&q=80' />
+                    </div>
+
+                </Slider>
+                
                 <input
                     className='search-input'
                     value={value}
@@ -76,8 +115,8 @@ const Body = () => {
                         <Link key={restaurant?.info.id}
                             to={"/restaurants/" + restaurant?.info.id}>
 
-                            {restaurant?.info.promoted ? (
-                                <RestaurantCardPromoted resData={restaurant?.info} />
+                            {restaurant?.info.avgRating > 4 ? (
+                                <HocCard resData={restaurant?.info} />
                             ) : (
                                 <RestroCard resData={restaurant?.info} />
                             )}

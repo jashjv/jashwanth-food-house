@@ -1,4 +1,4 @@
-import React, { Children, useState, lazy, Suspense } from "react";
+import React, { Children, useState, lazy, Suspense, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import Slider from "react-slick";
 import Header from "./components/Header";
@@ -9,6 +9,7 @@ import ErrorPage from "./components/404";
 import Contactus from "./components/Contactus";
 import RestroMenu from "./components/RestroMenu";
 import { Shimmer } from "react-shimmer";
+import UserContext from "./utils/context";
 // import InstaMart from "./components/InstaMart";
 
 const InstaMart = lazy(() => import("./components/InstaMart"))
@@ -57,15 +58,44 @@ export const RestroCard = (props) => {
       </body>
     </>
   )
+}
+
+export const EnhancedRestroCard = (NewCardHOC) => {
+
+  return (props) => {
+    return (
+      <>
+        <span>top rated</span>
+        <NewCardHOC {...props} /> 
+        {/* we can use any name for the parameter, but we shouldm pass the props from paremnt */}
+      </>
+    )
+  }
 
 }
 
+
 export const AppLayout = () => {
+
+  const [newuser, setName] = useState();
+
+  useEffect(() => {
+
+    const info = {
+      name: 'jashv'
+    }
+    setName(info.name)
+  }, [])
+
+
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+    <UserContext.Provider value={{ userName: newuser }}> 
+    {/* in the above line we can overide the context using the Provider */}
+      <div className="app">
+        <Header />
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 };
 
