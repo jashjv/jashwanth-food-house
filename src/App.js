@@ -10,6 +10,9 @@ import Contactus from "./components/Contactus";
 import RestroMenu from "./components/RestroMenu";
 import { Shimmer } from "react-shimmer";
 import UserContext from "./utils/context";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/cart";
 // import InstaMart from "./components/InstaMart";
 
 const InstaMart = lazy(() => import("./components/InstaMart"))
@@ -89,6 +92,7 @@ export const AppLayout = () => {
 
 
   return (
+    <Provider store={appStore}>
     <UserContext.Provider value={{ userName: newuser }}> 
     {/* in the above line we can overide the context using the Provider */}
       <div className="app">
@@ -96,6 +100,7 @@ export const AppLayout = () => {
         <Outlet />
       </div>
     </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -119,7 +124,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: '/cart',
-        element: <Contactus />
+        element: <Cart />
       },
       {
         path: '/restaurants/:resId',

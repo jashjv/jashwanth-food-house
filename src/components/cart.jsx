@@ -1,19 +1,34 @@
-import React from 'react'
-import styled from 'styled-components'
-import { CDN_URL } from '../utils/constants'
-import { useDispatch } from 'react-redux'
-import { addItem } from '../utils/cartSlice'
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import ItemList from './itemList';
+import { clearCart, removeItem } from '../utils/cartSlice';
+import styled from 'styled-components';
 
-const ItemList = (items) => {
-    const dispatch = useDispatch();
-    const handleAdd = (items) => {
-        dispatch(addItem(items))
+
+const Cart = () => {
+    const cartItems = useSelector((store)=>store.cart.item);
+    console.log(cartItems,'bbbb')
+
+    const dispatch= useDispatch();
+
+    const handleClear = () => {
+        dispatch(clearCart())
     }
 
-    return (
-        <ItemWrap>
+    const removeItemfromcart = (item) => {
+        dispatch(removeItem(item))
+    }
+
+  return (
+    <>
+    <button onClick={handleClear}>
+    clear all things from cart cart
+</button>
+
+    <ItemWrap>
+         
             {
-                items.data.map((elm) => (
+               cartItems.map((elm) => (
                     <>
                         <InnerItemWrap>
 
@@ -23,18 +38,19 @@ const ItemList = (items) => {
 
                             </span> -
                             <div>
-                                <button onClick={() => handleAdd(elm)}>
-                                    +Add
-                                </button>
+                            <button onClick={()=>removeItemfromcart(elm)}>
+    clear item
+</button>
+                               
                             </div>
                             <img src={'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/' + elm.card.info.imageId} />
 
                         </InnerItemWrap>
-                        {/* <div style={{ fontSize: '20px' }}>
+                        <div style={{ fontSize: '20px' }}>
                             <p>
                                 {elm.card.info.description}
                             </p>
-                        </div> */}
+                        </div>
 
                     </>
 
@@ -44,10 +60,11 @@ const ItemList = (items) => {
             }
 
         </ItemWrap>
+        </>
     )
 }
 
-export default ItemList;
+export default Cart;
 
 const ItemWrap = styled.div`
     width: 50%;
@@ -72,3 +89,5 @@ img{
 }
     
 `
+
+

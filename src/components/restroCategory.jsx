@@ -9,8 +9,6 @@ const {title,itemCards}=props.data;
 const {showItems,setShowindex}=props
 
 
-
-
 const handleAccordion =()=>{
     setShowindex()
 }
