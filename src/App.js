@@ -48,7 +48,7 @@ export const RestroCard = (props) => {
             <p>{avgRating} stars</p>
             <p>{address}</p>
             <span>{areaName}</span>
-            <span>{deliveryTime} minutes Deliver Time</span>
+            <span>{deliveryTime} min Deliver Time</span>
           </div>
           <div className="front">
             <div className="image">
