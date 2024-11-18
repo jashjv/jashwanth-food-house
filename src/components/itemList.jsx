@@ -13,7 +13,8 @@ const ItemList = (items) => {
     return (
         <ItemWrap>
             {
-                items.data.map((elm) => (
+                items.data.map((elm) =>{
+                    return (
                     <>
                         <InnerItemWrap>
 
@@ -38,7 +39,7 @@ const ItemList = (items) => {
 
                     </>
 
-                ))
+                )})
 
 
             }

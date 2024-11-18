@@ -35,6 +35,8 @@ export const RestroCard = (props) => {
   } = resData
 
 
+  console.log(cloudinaryImageId,'cloudinaryImageId')
+
 
   return (
     <>
@@ -50,10 +52,10 @@ export const RestroCard = (props) => {
           </div>
           <div className="front">
             <div className="image">
-              <img src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
+              <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
                 cloudinaryImageId
               } className='res-logo' />
-              <h3>{name}</h3>
+              <h3 style={{color:'red'}}>{name}</h3>
               {/* <h5>{avgRating} stars</h5> */}
             </div>
           </div>
@@ -77,13 +79,9 @@ export const EnhancedRestroCard = (NewCardHOC) => {
 
 }
 
-
 export const AppLayout = () => {
-
   const [newuser, setName] = useState();
-
   useEffect(() => {
-
     const info = {
       name: 'jashv'
     }

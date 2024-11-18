@@ -7,7 +7,6 @@ import styled from 'styled-components';
 
 const Cart = () => {
     const cartItems = useSelector((store)=>store.cart.item);
-    console.log(cartItems,'bbbb')
 
     const dispatch= useDispatch();
 
@@ -40,7 +39,7 @@ const Cart = () => {
                             <div>
                             <button onClick={()=>removeItemfromcart(elm)}>
     clear item
-</button>
+</button> 
                                
                             </div>
                             <img src={'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/' + elm.card.info.imageId} />
